@@ -1,7 +1,6 @@
 use strict;
 use warnings;
-use Test::More qw(no_plan);
-use Test::MockObject;
+use Test::More tests => 1;
 
 BEGIN {
     package MyApp::Auth;
@@ -31,7 +30,7 @@ BEGIN {
         my ( $username, $password ) = @_;
 
         if ( exists $user_info{$username} ) {
-            $self->user_key( $username );
+            $self->_user_key( $username );
             return 1 if ( $user_info{$username} eq $password );
         }
         return;
@@ -39,7 +38,7 @@ BEGIN {
     sub load_profile {
         my $self = shift;
 
-        my $info = $user_info{$self->user_key};
+        my $info = $user_info{$self->_user_key};
 
         delete $info->{password};
         return $info; # hashref
@@ -50,12 +49,12 @@ BEGIN {
     }
 }
 
-eval "use CGI";
+eval { use CGI; };
 if ($@) {
     plan skip_all => "no CGI module";
 }
 
-eval "use CGI::Session";
+eval { use CGI::Session; };
 if ($@) {
     plan skip_all => "no CGI::Session module";
 }

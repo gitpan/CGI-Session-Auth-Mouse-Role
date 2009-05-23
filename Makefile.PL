@@ -1,17 +1,15 @@
-use strict;
-use warnings;
-use ExtUtils::MakeMaker;
+use inc::Module::Install;
 
-WriteMakefile(
-    NAME                => 'CGI::Session::Auth::Mouse::Role',
-    AUTHOR              => '<noblejasper> <<nobjas@gmail.com>>',
-    VERSION_FROM        => 'lib/CGI/Session/Auth/Mouse/Role.pm',
-    ABSTRACT_FROM       => 'lib/CGI/Session/Auth/Mouse/Role.pm',
-    PL_FILES            => {},
-    PREREQ_PM => {
-        'Test::More' => 0,
-        'version'    => 0,
-    },
-    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean               => { FILES => 'CGI-Session-Auth-Mouse-Role-*' },
-);
+name 'CGI-Session-Auth-Mouse-Role';
+all_from 'lib/CGI/Session/Auth/Mouse/Role.pm';
+
+requires 'Mouse';
+requires 'CGI';
+requires 'CGI::Session';
+
+build_requires 'Test::More';
+use_test_base;
+auto_include_deps;
+author_tests('xt');
+auto_set_repository;
+WriteAll;

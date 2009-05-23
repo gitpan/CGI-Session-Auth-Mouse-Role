@@ -6,7 +6,7 @@ CGI::Session::Auth::Mouse::Role - Role for authentication of CGI::Session Module
 
 =head1 VERSION
 
-This document describes CGI::Session::Auth::Mouse::Role version 0.0.2
+This document describes CGI::Session::Auth::Mouse::Role version 0.0.3
 
 =head1 SYNOPSIS
 
@@ -77,6 +77,14 @@ This document describes CGI::Session::Auth::Mouse::Role version 0.0.2
         ## show login page
     }
 
+=head1 SAMPLE HTML
+
+    <form method="POST" action="sample.cgi">
+        <input type="text" name="login_username" />
+        <input type="password" name="login_password" />
+        <input type="submit" value="submit" />
+    </form>
+
 =head1 METHODS
 
 =over 4
@@ -85,14 +93,13 @@ This document describes CGI::Session::Auth::Mouse::Role version 0.0.2
 
 use warnings;
 use strict;
+use 5.008_001;
 use Carp;
 
 use version;
-our $VERSION = qv('0.0.4');
+our $VERSION = qv('0.0.5');
 
 use Mouse::Role;
-use Carp;
-use Digest::MD5 qw( md5_hex );
 use constant {
     LOGIN_KEY => '~logged_in',
     TRIAL_KEY => '~login_trial',
@@ -153,9 +160,12 @@ sub authenticate {
     else {
         $self->_no_session_authenticate();
     }
-    return 1; # authenticate done
+    return; # authenticate done
 }
 
+=item logged_in
+
+Returns a boolean value representing the current visitors authentication status.
 
 =item logout
 
@@ -242,11 +252,18 @@ Please report any bugs or feature requests to
 C<bug-cgi-session-auth-mouse-role@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
 
+=head2 DEPENDENCIES
+
+L<Mouse>
+L<Mouse::Role>
+L<CGI::Session>
+
 =head1 SEE ALSO
 
 L<CGI::Session>
 L<CGI::Session::Auth>
 L<Mouse>
+L<Mouse::Role>
 
 =head1 AUTHOR
 
