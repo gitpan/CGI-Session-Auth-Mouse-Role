@@ -1,0 +1,106 @@
+8
+
+dir
+164
+svn+ssh://localhost/var/svn/nobjas/cpan_modules/tags/CGI-Session-Auth-Mouse-Role/0.0.3
+svn+ssh://localhost/var/svn/nobjas
+
+
+
+2009-05-23T12:17:43.960820Z
+164
+jasper
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+8f930977-2f8f-4cf5-b0f6-08d4c8fd6d8b
+
+ignore.txt
+file
+
+
+
+
+2009-05-23T12:17:19.000000Z
+910f1ed1b96850514420f1389b3f1f54
+2009-05-23T12:17:43.960820Z
+164
+jasper
+
+t
+dir
+
+MANIFEST
+file
+
+
+
+
+2009-05-23T12:17:19.000000Z
+1e083744186cf60e86e66c65972fb1ba
+2009-05-23T12:17:43.960820Z
+164
+jasper
+
+lib
+dir
+
+Makefile.PL
+file
+
+
+
+
+2009-05-23T12:17:19.000000Z
+cf8a9cf602bcbbaefc11c4a04578eac8
+2009-05-23T12:17:43.960820Z
+164
+jasper
+
+Changes
+file
+
+
+
+
+2009-05-23T12:17:19.000000Z
+40704d2b9f2e5a0d73e5862ffd233dd3
+2009-05-23T12:17:43.960820Z
+164
+jasper
+
+README
+file
+
+
+
+
+2009-05-23T12:17:19.000000Z
+8a2460e0d311359545d82a31840b2e38
+2009-05-23T12:17:43.960820Z
+164
+jasper
+
+.cvsignore
+file
+
+
+
+
+2009-05-23T12:17:19.000000Z
+2ab26eb73a6a1388880687d0039dd9a3
+2009-05-23T12:17:43.960820Z
+164
+jasper
+

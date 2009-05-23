@@ -1,0 +1,40 @@
+8
+
+dir
+164
+svn+ssh://localhost/var/svn/nobjas/cpan_modules/tags/CGI-Session-Auth-Mouse-Role/0.0.3/lib/CGI/Session/Auth/Mouse
+svn+ssh://localhost/var/svn/nobjas
+
+
+
+2009-05-23T12:17:43.960820Z
+164
+jasper
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+8f930977-2f8f-4cf5-b0f6-08d4c8fd6d8b
+
+Role.pm
+file
+
+
+
+
+2009-05-23T12:17:19.000000Z
+3aa6cd4e1e970eb7fd56a524dada9d99
+2009-05-23T12:17:43.960820Z
+164
+jasper
+
