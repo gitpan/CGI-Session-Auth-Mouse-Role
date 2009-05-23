@@ -88,7 +88,7 @@ use strict;
 use Carp;
 
 use version;
-our $VERSION = qv('0.0.3');
+our $VERSION = qv('0.0.4');
 
 use Mouse::Role;
 use Carp;

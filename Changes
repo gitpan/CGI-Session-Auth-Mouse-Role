@@ -3,3 +3,5 @@ Revision history for CGI-Session-Auth-Mouse-Role
 0.0.1  Sat May 23 11:54:35 2009
        Initial release.
 
+0.0.4  Sat May 23 21:47:00 2009
+       change POD only.
