@@ -17,14 +17,7 @@ This document describes CGI::Session::Auth::Mouse::Role version 0.0.3
 
         with qw/CGI::Session::Auth::Mouse::Role/;
 
-        has '_user_key' => (
-            is  => 'rw',
-            isa => 'Str',
-        );
-
-        has 'user_info' => (
-            is => 'ro',
-            isa => 'HashRef',
+        has 'user_info' => ( is => 'ro', isa => 'HashRef',
             default => sub {
                 return {
                     hoge => {
@@ -40,30 +33,23 @@ This document describes CGI::Session::Auth::Mouse::Role version 0.0.3
                 };
             },
         );
+        has 'profiles' => ( is => 'rw', isa => 'HashRef' );
 
         sub login {
             my $self = shift;
             my ( $username, $password ) = @_;
             if ( exists $self->user_info->{$username} ) {
-                $self->user_key($username);
+                $self->_set_profile($self->user_info->{$username});
                 return 1 if ( $self->user_info->{$username}->{password} eq $password );
             }
             return;
         }
-
-        sub load_profile {
-            my ( $self, $user_key ) = @_;
-
-            my $info = $self->user_info->{ $user_key };
-
+        sub _set_profile {
+            my ( $self, $info ) = @_;
             delete $info->{password};
-            return $info;    # hashref
+            $self->profile( $info );
         }
-
-        sub user_key {
-            my $self = shift;
-            return $self->_user_key || 0;
-        }
+        sub load_profile { return shift->profile; }
     }
     my $auth = MyApp::Auth->new(
         cgi     => new CGI,
@@ -97,7 +83,7 @@ use 5.008_001;
 use Carp;
 
 use version;
-our $VERSION = qv('0.0.5');
+our $VERSION = qv('0.0.6');
 
 use Mouse::Role;
 use constant {
@@ -105,23 +91,17 @@ use constant {
     TRIAL_KEY => '~login_trial',
 };
 
-has 'prefix'  => (
-    is      => 'ro',
-    isa     => 'Str',
+has 'prefix'    => ( is => 'ro', isa => 'Str',
     require => 1,
     default => 'login_',
 );
 
-has 'logged_in' => (
-    is      => 'rw',
-    isa     => 'Bool',
+has 'logged_in' => ( is => 'rw', isa => 'Bool',
     require => 1,
     default => 0,
 );
 
-has 'session' => (
-    is      => 'ro',
-    isa     => 'CGI::Session',
+has 'session'   => ( is => 'ro', isa => 'CGI::Session',
     require => 1,
     default => sub {
         my $class = 'CGI::Session';
@@ -130,9 +110,7 @@ has 'session' => (
     },
 );
 
-has 'cgi'     => (
-    is      => 'ro',
-    isa     => 'CGI',
+has 'cgi'     => ( is => 'ro', isa => 'CGI',
     require => 1,
     default => sub {
         my $class = 'CGI';
@@ -141,7 +119,7 @@ has 'cgi'     => (
     },
 );
 
-requires qw/login load_profile user_key/;
+requires qw/login load_profile/;
 
 
 =item authenticate
@@ -212,15 +190,14 @@ sub _fail_login {
 sub _set_session_params {
     my $self = shift;
 
-    $self->session->param("~user_key", $self->user_key);
     $self->session->clear([TRIAL_KEY]);
-    $self->_set_session_profile( $self->user_key );
+    $self->_set_session_profile();
 }
 
 sub _set_session_profile {
-    my ( $self, $user_key ) = @_;
+    my $self = shift;
 
-    my $profiles = $self->load_profile( $user_key );
+    my $profiles = $self->load_profile();
     foreach my $key ( keys %{ $profiles } ) {
         $self->session->param( $key, $profiles->{$key} );
     }

@@ -6,6 +6,10 @@ Revision history for CGI-Session-Auth-Mouse-Role
 0.0.4  Sat May 23 21:47:00 2009
          - change POD only.
 
-0.0.5  Sat May 24 01:15:00 2009
+0.0.5  Sun May 24 01:15:00 2009
          - ExtUtil::MakeMaker -> Module::Install.
-         - add POD. 
+         - add POD.
+
+0.0.5  Sun May 24 13:40:00 2009
+         - add DBI.
+         - remove user_key method.
