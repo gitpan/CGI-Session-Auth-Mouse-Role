@@ -6,6 +6,8 @@ all_from 'lib/CGI/Session/Auth/Mouse/Role.pm';
 requires 'Mouse';
 requires 'CGI';
 requires 'CGI::Session';
+requires 'DBI';
+requires 'Digest::MD5';
 
 build_requires 'Test::More';
 use_test_base;

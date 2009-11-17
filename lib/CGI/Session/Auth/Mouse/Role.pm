@@ -83,7 +83,7 @@ use 5.008_001;
 use Carp;
 
 use version;
-our $VERSION = qv('0.0.6');
+our $VERSION = qv('0.0.7');
 
 use Mouse::Role;
 use constant {
