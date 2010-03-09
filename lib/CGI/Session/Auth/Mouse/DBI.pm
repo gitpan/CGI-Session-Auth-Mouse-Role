@@ -1,8 +1,10 @@
 package CGI::Session::Auth::Mouse::DBI;
 
+=encoding utf-8
+
 =head1 NAME
 
-CGI::Session::Auth::Mouse::DBI - Authenticated sessions for CGI scripts
+CGI::Session::Auth::Mouse::DBI - CGI::Session::Auth::Mouse のSessionの保存先をDBIでうんぬんします
 
 =head1 VERSION
 
@@ -64,7 +66,7 @@ use 5.008_001;
 use Carp;
 
 use version;
-our $VERSION = qv('0.0.3');
+our $VERSION = qv('0.0.3.1');
 
 use Mouse;
 use DBI;

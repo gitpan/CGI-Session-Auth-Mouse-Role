@@ -1,8 +1,10 @@
 package CGI::Session::Auth::Mouse::Role;
 
+=encoding utf-8
+
 =head1 NAME
 
-CGI::Session::Auth::Mouse::Role - Role for authentication of CGI::Session Module
+CGI::Session::Auth::Mouse::Role - CGI::Session::Auth をMouseのRoleで作ってみました。Mouse勉強用でしたw
 
 =head1 VERSION
 
@@ -83,7 +85,7 @@ use 5.008_001;
 use Carp;
 
 use version;
-our $VERSION = qv('0.0.7');
+our $VERSION = qv('0.0.7.1');
 
 use Mouse::Role;
 use constant {
